@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-      
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,144 +8,24 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
     <style>
-        
-        /* Tabs Navigation - Category Buttons */
-        .tabs-container {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .tabs-scroll {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 8px 0;
-            justify-content: center;
-        }
-
-        .tab {
-            padding: 10px 16px;
-            border-radius: 999px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 14px;
-            color: var(--muted);
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-            margin: 2px;
-        }
-
-
-
-
-
-        
-
-.tabs-container {
-  text-align: center;
-}
-
-.tab-row {
-  margin-bottom: 10px;
-}
-
-.tab {
-  margin: 4px;
-}
-
-
-
-
-
-        
-        
-        .tab.active {
-            background: linear-gradient(90deg, var(--gold1), var(--gold2));
-            color: #0b0b0d;
-            border: none;
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
-        }
-
-        /* Hover effect for better UX */
-        .tab:hover {
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-1px);
-        }
-
-        /* Tablet styles */
-        @media (min-width: 768px) {
-            .tabs-scroll {
-                justify-content: flex-start;
-            }
-
-            .tab {
-                padding: 12px 20px;
-                font-size: 15px;
-            }
-        }
-
-        /* Desktop styles */
-        @media (min-width: 1024px) {
-            .tab {
-                padding: 12px 24px;
-                font-size: 15px;
-            }
-        }
-
-        /* Mobile-specific adjustments */
-        @media (max-width: 767px) {
-            .tab {
-                padding: 8px 14px;
-                font-size: 13px;
-            }
-
-            .tabs-scroll {
-                justify-content: center;
-            }
-        }
-
-        /* Small mobile devices */
-        @media (max-width: 480px) {
-            .tab {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-
-            .tabs-scroll {
-                gap: 5px;
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
         :root {
-            --bg: #0b0b0d;
-            --surface: #0f1114;
-            --muted: #9aa0a6;
-            --gold1: #d4af37;
-            --gold2: #ffcc66;
+            --bg: #ffffff;  /* Pure white background like PDF */
+            --surface: #f5f5f5;
+            --text-dark: #1a1a1a;
+            --text-muted: #4a4a4a;
+            --gold1: #b8860b;  /* Dark gold for better visibility on white */
+            --gold2: #d4af37;
             --accent: linear-gradient(90deg, var(--gold1), var(--gold2));
-            --glass: rgba(255, 255, 255, 0.03);
+            --glass: rgba(0, 0, 0, 0.02);
             --card-radius: 16px;
-            --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-            --glass-strong: rgba(255, 255, 255, 0.04);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --glass-strong: rgba(0, 0, 0, 0.03);
             --maxw: 1200px;
             --gap: 20px;
             --ff-heading: 'Playfair Display', serif;
             --ff-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            --orange: #ff9800;
-            --green: #4CAF50;
+            --orange: #e65100;
+            --green: #2e7d32;
         }
 
         * {
@@ -155,8 +34,7 @@
             padding: 0;
         }
 
-        html,
-        body {
+        html, body {
             height: 100%;
             font-size: 16px;
         }
@@ -164,36 +42,30 @@
         body {
             position: relative;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             min-height: 100vh;
             overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text-dark);
+            font-family: var(--ff-ui);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            line-height: 1.5;
         }
 
-        /* Background image layer */
-        body::before {
+        /* Subtle texture overlay like PDF */
+        body::after {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('bg.png') no-repeat center center/cover;
-            filter: grayscale(100%);
-            opacity: 0.5;
+            background: radial-gradient(circle at 30% 30%, rgba(184, 134, 11, 0.02) 0%, transparent 30%),
+                        radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
+            pointer-events: none;
             z-index: -1;
-        }
-
-        body {
-            background: radial-gradient(1200px 600px at 10% 10%, rgba(212, 175, 55, 0.06), transparent 6%),
-                radial-gradient(1000px 500px at 95% 90%, rgba(255, 204, 102, 0.04), transparent 8%),
-                var(--bg);
-            color: #e8e6e3;
-            font-family: var(--ff-ui);
-            -webkit-font-smoothing: antialiased;
-            padding: 16px;
-            display: flex;
-            justify-content: center;
-            line-height: 1.5;
         }
 
         .container {
@@ -204,23 +76,25 @@
             gap: var(--gap);
         }
   
-        /* Cafe Header - Original Style */
+        /* Cafe Header - PDF Style */
         .cafe-header {
             text-align: center;
             margin-bottom: 30px;
             padding: 20px 0;
+            border-bottom: 2px solid var(--gold1);
         }
 
         .cafe-name {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             color: var(--gold1);
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.05);
             line-height: 1;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             position: relative;
             display: inline-block;
+            letter-spacing: 2px;
         }
 
         .cafe-name::after {
@@ -229,17 +103,17 @@
             bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 120px;
             height: 2px;
-            background: var(--gold1);
+            background: linear-gradient(90deg, transparent, var(--gold1), var(--gold2), transparent);
         }
 
         .cafe-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--orange);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 700;
+            font-weight: 600;
             margin-top: 10px;
         }
 
@@ -251,20 +125,20 @@
 
         .location-text {
             font-weight: 700;
-            color: #ffffff;
+            color: var(--text-dark);
             margin-bottom: 8px;
         }
 
         .address {
             color: var(--green);
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.05rem;
             margin-bottom: 8px;
         }
 
         .mobile-numbers {
-            color: #ffffff;
-            font-weight: 700;
+            color: var(--text-dark);
+            font-weight: 600;
             font-size: 1.05rem;
             margin-bottom: 15px;
         }
@@ -276,8 +150,7 @@
             margin-top: 20px;
         }
 
-        .veg,
-        .nonveg {
+        .veg, .nonveg {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -285,22 +158,22 @@
             padding: 8px 16px;
             border-radius: 30px;
             transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(184, 134, 11, 0.2);
         }
 
         .veg {
             color: #2e7d32;
-            background: rgba(46, 125, 50, 0.1);
         }
 
         .nonveg {
             color: #c62828;
-            background: rgba(198, 40, 40, 0.1);
         }
 
-        .veg:hover,
-        .nonveg:hover {
-            transform: translateY(-3px);
+        .veg:hover, .nonveg:hover {
+            transform: translateY(-2px);
             box-shadow: var(--shadow);
+            border-color: rgba(184, 134, 11, 0.3);
         }
 
         .symbol {
@@ -320,206 +193,114 @@
             border: 2px solid #c62828;
         }
 
-        /* Location Link Section - Added at bottom */
-        .location-link-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(6px);
-            text-align: center;
-        }
-
-        .location-link-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .location-link-header h3 {
-            font-family: var(--ff-heading);
-            color: var(--gold2);
-            font-size: 1.3rem;
-            margin: 0;
-        }
-
-        .location-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--gold1);
-        }
-
-        .map-link-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .map-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(90deg, var(--gold1), var(--gold2));
-            color: #0b0b0d;
-            text-decoration: none;
+        /* Search Bar */
+        .search {
+            background: white;
+            border: 1px solid rgba(184, 134, 11, 0.2);
             border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .map-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-        }
-
-        .map-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Header and Navigation */
-        .header {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 10px;
-        }
-
-        .brand {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--gold1), var(--gold2));
+            padding: 12px 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #0b0b0d;
-            font-family: var(--ff-heading);
-            font-size: 20px;
-            font-weight: 700;
-            box-shadow: 0 6px 22px rgba(212, 175, 55, 0.12);
-            flex-shrink: 0;
+            gap: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
-        .brand-text h1 {
-            margin: 0;
-            font-family: var(--ff-heading);
-            font-size: 20px;
-            letter-spacing: 0.6px;
-        }
-
-        .brand-text p {
-            margin: 2px 0 0 0;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .search-container {
-            background: var(--glass);
-            backdrop-filter: blur(6px);
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .search-container input {
+        .search input {
             background: transparent;
-            border: 0;
-            outline: 0;
-            color: inherit;
+            border: none;
+            color: var(--text-dark);
             font-size: 16px;
             width: 100%;
+            outline: none;
+        }
+
+        .search input::placeholder {
+            color: #999999;
+        }
+
+        .search svg path,
+        .search svg circle {
+            stroke: var(--gold1);
         }
 
         /* Tabs Navigation */
-        .tabs-container {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
         .tabs-scroll {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
-            overflow-x: auto;
             padding: 8px 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .tabs-scroll::-webkit-scrollbar {
-            display: none;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
         .tab {
             padding: 10px 16px;
             border-radius: 999px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            background: white;
+            border: 1px solid rgba(184, 134, 11, 0.2);
             font-size: 14px;
-            color: var(--muted);
+            color: var(--text-muted);
             cursor: pointer;
             white-space: nowrap;
-            flex-shrink: 0;
+            transition: all 0.3s ease;
+            margin: 2px;
+            font-weight: 500;
+        }
+
+        .tab:hover {
+            border-color: var(--gold1);
+            color: var(--gold1);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.1);
         }
 
         .tab.active {
             background: var(--accent);
-            color: #0b0b0d;
+            color: white;
             border: none;
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+            font-weight: 600;
         }
 
         /* Menu Grid */
         .menu-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
         .card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+            background: white;
             border-radius: 12px;
-            padding: 16px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
-            transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.28s;
+            gap: 15px;
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(2, 6, 23, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(184, 134, 11, 0.1);
+            border-color: rgba(184, 134, 11, 0.3);
         }
 
         .card-header {
             display: flex;
-            gap: 12px;
+            gap: 16px;
         }
 
         .thumb {
-            width: 180px;
-            height: 180px;
+            width: 120px;
+            height: 120px;
             border-radius: 10px;
             overflow: hidden;
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(184, 134, 11, 0.1);
         }
 
         .thumb img {
@@ -539,17 +320,19 @@
         }
 
         .dish {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
             font-family: var(--ff-heading);
             line-height: 1.3;
+            color: var(--gold1);
         }
 
         .desc {
-            color: var(--muted);
+            color: var(--text-muted);
             font-size: 13px;
             margin-top: 4px;
+            line-height: 1.5;
         }
 
         .card-footer {
@@ -557,12 +340,14 @@
             justify-content: space-between;
             align-items: center;
             gap: 12px;
+            border-top: 1px dashed rgba(184, 134, 11, 0.2);
+            padding-top: 12px;
         }
 
         .price {
             font-weight: 700;
-            font-size: 16px;
-            color: var(--gold2);
+            font-size: 20px;
+            color: var(--gold1);
             flex-shrink: 0;
         }
 
@@ -573,68 +358,46 @@
         }
 
         .pill {
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(184, 134, 11, 0.15);
             font-size: 11px;
-            color: var(--muted);
-            background: transparent;
+            color: var(--text-muted);
+            background: rgba(184, 134, 11, 0.02);
+            font-weight: 500;
         }
 
         /* Footer */
         .footer {
             text-align: center;
             padding: 20px 0;
-            color: var(--muted);
+            color: var(--text-muted);
             font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(184, 134, 11, 0.15);
             margin-top: 20px;
         }
 
         /* Gold Line */
         .gold-line {
-            height: 3px;
+            height: 2px;
             border-radius: 999px;
-            background: linear-gradient(90deg, var(--gold1), var(--gold2));
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.08);
+            background: linear-gradient(90deg, transparent, var(--gold1), var(--gold2), transparent);
             margin: 8px 0 16px 0;
         }
 
         /* Tablet and Desktop Styles */
         @media (min-width: 768px) {
             body {
-                padding: 24px;
-            }
-
-            .container {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 24px;
-                align-items: start;
-            }
-
-            .header {
-                grid-column: 1 / -1;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .brand {
-                flex: 1;
-            }
-
-            .search-container {
-                width: auto;
-                min-width: 300px;
-            }
-
-            .tabs-container {
-                grid-column: 1 / -1;
+                padding: 30px;
             }
 
             .menu-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tab {
+                padding: 12px 20px;
+                font-size: 15px;
             }
         }
 
@@ -642,13 +405,45 @@
             .menu-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .tab {
+                padding: 12px 24px;
+            }
         }
 
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-                color: black;
+        @media (max-width: 767px) {
+            .tab {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .thumb {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tab {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .tabs-scroll {
+                gap: 5px;
+            }
+
+            .cafe-name {
+                font-size: 3rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+
+            .thumb {
+                width: 100%;
+                height: 160px;
             }
         }
     </style>
@@ -656,17 +451,14 @@
 
 <body>
     <div class="container">  
-        <!-- Cafe Header - Original Style -->
+        <!-- Cafe Header - PDF Style -->
         <div class="cafe-header">
-<img src="logo2.png" alt="Logo" style="width:400px; height:auto; display:block; margin:0 auto;">
+            <img src="logo2.png" alt="Logo" style="max-width:300px; height:auto; display:block; margin:0 auto; margin-bottom:20px;">
             <div class="cafe-name">LOTUS CAFE</div>
-            <div class="cafe-subtitle"></div>
+            <div class="cafe-subtitle">EST. 2020</div>
             <div class="location-info">
-                <div class="location-text"></div>
-                <div class="address"></div>
-                            <div class="cafe-subtitle"></div>
-                           <div class="cafe-subtitle"></div>
-                <div class="mobile-numbers"><br> Mo no.+91 72087 55832</div>
+                <div class="address">Open Hours: Mon-Fri 08AM-10PM | Sat-Sun 08AM-12PM</div>
+                <div class="mobile-numbers">📞 +91 72087 55832</div>
             </div>
             <div class="veg-nonveg">
                 <div class="veg">
@@ -686,34 +478,32 @@
                 <div class="controls">
                     <div class="search" role="search">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-                            <path d="M21 21l-4.35-4.35" stroke="rgba(255,255,255,0.6)" stroke-width="1.6"
+                            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.6"
                                 stroke-linecap="round" stroke-linejoin="round"></path>
-                            <circle cx="11" cy="11" r="6" stroke="rgba(255,255,255,0.6)" stroke-width="1.6"
+                            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.6"
                                 stroke-linecap="round" stroke-linejoin="round"></circle>
                         </svg>
                         <input id="search" placeholder="Search dishes, ingredients..." />
                     </div>
 
-
-
-   <div class="tabs-scroll">
-<button class="tab active" data-cat="all">🍽️ All Items</button>
-<button class="tab" data-cat="SNACKS">🍟 Snacks</button>
-<button class="tab" data-cat="TEA & BEVERAGES">☕ Tea & Beverages</button>
-<button class="tab" data-cat="COFFEE">☕ Coffee</button>
-<button class="tab" data-cat="SOUTH INDIAN">🥞 South Indian</button>
-<button class="tab" data-cat="INDIAN SANDWICHES">🥪 Indian Sandwiches</button>
-<button class="tab" data-cat="GRILLED SANDWICHES">🥪 Grilled Sandwiches</button>
-<button class="tab" data-cat="CHINESE STARTERS">🍜 Chinese Starters</button>
-<button class="tab" data-cat="EGG PREPARATIONS">🥚 Egg Preparations</button>
-<button class="tab" data-cat="RICE PREPARATIONS">🍚 Rice Preparations</button>
-<button class="tab" data-cat="NOODLES">🍝 Noodles</button>
-<button class="tab" data-cat="FRIED RICE">🥡 Fried Rice</button>
-<button class="tab" data-cat="FRESH JUICES">🍹 Fresh Juices</button>
-<button class="tab" data-cat="FRUIT SHAKES">🥤 Fruit Shakes</button>
-<button class="tab" data-cat="CHAAT CORNER">🥙 Chaat Corner</button>
-<button class="tab" data-cat="MEALS">🍱 Meals</button>
-               </div>  
+                    <div class="tabs-scroll">
+                        <button class="tab active" data-cat="all">🍽️ All Items</button>
+                        <button class="tab" data-cat="SNACKS">🍟 Snacks</button>
+                        <button class="tab" data-cat="TEA & BEVERAGES">☕ Tea & Beverages</button>
+                        <button class="tab" data-cat="COFFEE">☕ Coffee</button>
+                        <button class="tab" data-cat="SOUTH INDIAN">🥞 South Indian</button>
+                        <button class="tab" data-cat="INDIAN SANDWICHES">🥪 Indian Sandwiches</button>
+                        <button class="tab" data-cat="GRILLED SANDWICHES">🥪 Grilled Sandwiches</button>
+                        <button class="tab" data-cat="CHINESE STARTERS">🍜 Chinese Starters</button>
+                        <button class="tab" data-cat="EGG PREPARATIONS">🥚 Egg Preparations</button>
+                        <button class="tab" data-cat="RICE PREPARATIONS">🍚 Rice Preparations</button>
+                        <button class="tab" data-cat="NOODLES">🍝 Noodles</button>
+                        <button class="tab" data-cat="FRIED RICE">🥡 Fried Rice</button>
+                        <button class="tab" data-cat="FRESH JUICES">🍹 Fresh Juices</button>
+                        <button class="tab" data-cat="FRUIT SHAKES">🥤 Fruit Shakes</button>
+                        <button class="tab" data-cat="CHAAT CORNER">🥙 Chaat Corner</button>
+                        <button class="tab" data-cat="MEALS">🍱 Meals</button>
+                    </div>  
                 </div>
             </div>
 
@@ -724,119 +514,117 @@
     </div>
 
     <script>
-        // Menu Data - FIXED VERSION
+        // Menu Data
         const data = [
-      
-{"id": 1, "cat": "SNACKS", "name": "MISAL PAAV", "price": "80/-", "desc": "Spicy sprout curry served with bread rolls", "tags": ["Veg"], "img": "img/misal_paav.jpeg"},
-{"id": 2, "cat": "SNACKS", "name": "ONION PОНА", "price": "50/-", "desc": "Flattened rice cooked with onions and spices", "tags": ["Veg"], "img": "img/onion_poha.jpeg"},
-{"id": 3, "cat": "SNACKS", "name": "SAMOSA", "price": "30/-", "desc": "Crispy pastry filled with spiced potatoes", "tags": ["Veg"], "img": "img/samosa.jpeg"},
-{"id": 4, "cat": "SNACKS", "name": "BATATA VADA", "price": "30/-", "desc": "Deep fried potato dumpling", "tags": ["Veg"], "img": "img/batata_vada.jpeg"},
-{"id": 5, "cat": "SNACKS", "name": "VEG CUTLET", "price": "70/-", "desc": "Crispy vegetable patties", "tags": ["Veg"], "img": "img/veg_cutlet.jpeg"},
-{"id": 6, "cat": "SNACKS", "name": "VEG PAKODA", "price": "70/-", "desc": "Assorted vegetable fritters", "tags": ["Veg"], "img": "img/veg_pakoda.jpeg"},
-{"id": 7, "cat": "SNACKS", "name": "PURI BHAJI", "price": "70/-", "desc": "Deep fried puffed bread with potato curry", "tags": ["Veg"], "img": "img/puri_bhaji.jpeg"},
-{"id": 8, "cat": "SNACKS", "name": "CHOLE BHATURE", "price": "70/-", "desc": "Spicy chickpea curry with fried bread", "tags": ["Veg"], "img": "img/chole_bhature.jpeg"},
-{"id": 9, "cat": "SNACKS", "name": "PAV BHAJI", "price": "100/-", "desc": "Mashed veg curry with buttered bread", "tags": ["Veg"], "img": "img/pav_bhaji.jpeg"},
-{"id": 10, "cat": "SNACKS", "name": "VEGETABLE MAGGIE", "price": "60/-", "desc": "Instant noodles with mixed vegetables", "tags": ["Veg"], "img": "img/vegetable_maggie.jpeg"},
-{"id": 11, "cat": "SNACKS", "name": "CHEESE MAGGIE", "price": "80/-", "desc": "Instant noodles topped with cheese", "tags": ["Veg"], "img": "img/cheese_maggie.jpeg"},
-{"id": 12, "cat": "TEA & BEVERAGES", "name": "SPECIAL TEA", "price": "20/-", "desc": "Rich and aromatic special tea", "tags": ["Veg"], "img": "img/special_tea.jpeg"},
-{"id": 13, "cat": "TEA & BEVERAGES", "name": "MASALA TEA", "price": "20/-", "desc": "Tea brewed with Indian spices", "tags": ["Veg"], "img": "img/masala_tea.jpeg"},
-{"id": 14, "cat": "TEA & BEVERAGES", "name": "BLACK TEA HONEY", "price": "30/-", "desc": "Black tea sweetened with honey", "tags": ["Veg"], "img": "img/black_tea_honey.jpeg"},
-{"id": 15, "cat": "TEA & BEVERAGES", "name": "LEMON TEA", "price": "30/-", "desc": "Refreshing tea with a zing of lemon", "tags": ["Veg"], "img": "img/lemon_tea.jpeg"},
-{"id": 16, "cat": "TEA & BEVERAGES", "name": "GREEN TEA", "price": "30/-", "desc": "Healthy and light green tea", "tags": ["Veg"], "img": "img/green_tea.jpeg"},
-{"id": 17, "cat": "COFFEE", "name": "NESCOFFEE", "price": "20/-", "desc": "Classic instant coffee", "tags": ["Veg"], "img": "img/nescoffee.jpeg"},
-{"id": 18, "cat": "COFFEE", "name": "FILTER COFFEE", "price": "25/-", "desc": "Traditional South Indian filter coffee", "tags": ["Veg"], "img": "img/filter_coffee.jpeg"},
-{"id": 19, "cat": "COFFEE", "name": "BLACK COFFEE", "price": "30/-", "desc": "Strong coffee without milk", "tags": ["Veg"], "img": "img/black_coffee.jpeg"},
-{"id": 20, "cat": "COFFEE", "name": "CAPPUCCINO", "price": "40/-", "desc": "Frothy coffee with a rich layer of foam", "tags": ["Veg"], "img": "img/cappuccino.jpeg"},
-{"id": 21, "cat": "COFFEE", "name": "ESPRESSO", "price": "30/-", "desc": "Concentrated coffee shot", "tags": ["Veg"], "img": "img/espresso.jpeg"},
-{"id": 22, "cat": "COFFEE", "name": "AMERICANO", "price": "40/-", "desc": "Diluted espresso for a smooth taste", "tags": ["Veg"], "img": "img/americano.jpeg"},
-{"id": 23, "cat": "SOUTH INDIAN", "name": "UPMA", "price": "60/-", "desc": "Savory semolina porridge", "tags": ["Veg"], "img": "img/upma.jpeg"},
-{"id": 24, "cat": "SOUTH INDIAN", "name": "IDLI SAMBAR", "price": "60/-", "desc": "Steamed rice cakes with lentil soup", "tags": ["Veg"], "img": "img/idli_sambar.jpeg"},
-{"id": 25, "cat": "SOUTH INDIAN", "name": "MEDU WADA SAMBAR", "price": "80/-", "desc": "Fried lentil donuts with sambar", "tags": ["Veg"], "img": "img/medu_wada_sambar.jpeg"},
-{"id": 26, "cat": "SOUTH INDIAN", "name": "ONION UTTAPAM", "price": "70/-", "desc": "Thick rice pancake topped with onions", "tags": ["Veg"], "img": "img/onion_uttapam.jpeg"},
-{"id": 27, "cat": "SOUTH INDIAN", "name": "PLAIN DOSA", "price": "60/-", "desc": "Thin crispy rice crepe", "tags": ["Veg"], "img": "img/plain_dosa.jpeg"},
-{"id": 28, "cat": "SOUTH INDIAN", "name": "BUTTER PLAIN DOSA", "price": "70/-", "desc": "Plain dosa with extra butter", "tags": ["Veg"], "img": "img/butter_plain_dosa.jpeg"},
-{"id": 29, "cat": "SOUTH INDIAN", "name": "MASALA DOSA", "price": "80/-", "desc": "Dosa filled with spiced potato", "tags": ["Veg"], "img": "img/masala_dosa.jpeg"},
-{"id": 30, "cat": "SOUTH INDIAN", "name": "BUTTER MASALA DOSA", "price": "90/-", "desc": "Masala dosa with butter", "tags": ["Veg"], "img": "img/butter_masala_dosa.jpeg"},
-{"id": 31, "cat": "SOUTH INDIAN", "name": "SCHEZWAN DOSA", "price": "80/-", "desc": "Dosa with spicy schezwan sauce", "tags": ["Veg"], "img": "img/schezwan_dosa.jpeg"},
-{"id": 32, "cat": "SOUTH INDIAN", "name": "SCHEZWAN MASALA DOSA", "price": "90/-", "desc": "Masala dosa with schezwan twist", "tags": ["Veg"], "img": "img/schezwan_masala_dosa.jpeg"},
-{"id": 33, "cat": "SOUTH INDIAN", "name": "MYSORE MASALA DOSA", "price": "100/-", "desc": "Spicy Mysore style masala dosa", "tags": ["Veg"], "img": "img/mysore_masala_dosa.jpeg"},
-{"id": 34, "cat": "SOUTH INDIAN", "name": "MYSORE BUTTER MASALA DOSA", "price": "110/-", "desc": "Mysore masala dosa with butter", "tags": ["Veg"], "img": "img/mysore_butter_masala_dosa.jpeg"},
-{"id": 35, "cat": "SOUTH INDIAN", "name": "MYSORE CHEESE MASALA DOSA", "price": "130/-", "desc": "Mysore masala dosa with cheese", "tags": ["Veg"], "img": "img/mysore_cheese_masala_dosa.jpeg"},
-{"id": 36, "cat": "SOUTH INDIAN", "name": "SPRING DOSA", "price": "130/-", "desc": "Dosa with crunchy vegetable filling", "tags": ["Veg"], "img": "img/spring_dosa.jpeg"},
-{"id": 37, "cat": "INDIAN SANDWICHES", "name": "VEGGIE TOAST SANDWICH", "price": "50/-", "desc": "Toasted bread with fresh vegetables", "tags": ["Veg"], "img": "img/veggie_toast_sandwich.jpeg"},
-{"id": 38, "cat": "INDIAN SANDWICHES", "name": "MASALA TOAST SANDWICH", "price": "60/-", "desc": "Toasted bread with spiced potato filling", "tags": ["Veg"], "img": "img/masala_toast_sandwich.jpeg"},
-{"id": 39, "cat": "INDIAN SANDWICHES", "name": "JAM TOAST SANDWICH", "price": "40/-", "desc": "Sweet sandwich with fruit jam", "tags": ["Veg"], "img": "img/jam_toast_sandwich.jpeg"},
-{"id": 40, "cat": "INDIAN SANDWICHES", "name": "VEGGIE CHEESE TOAST SANDWICH", "price": "60/-", "desc": "Veggie toast with melted cheese", "tags": ["Veg"], "img": "img/veggie_cheese_toast_sandwich.jpeg"},
-{"id": 41, "cat": "INDIAN SANDWICHES", "name": "CHILLY CHEESE TOAST SANDWICH", "price": "80/-", "desc": "Spicy green chillies and cheese toast", "tags": ["Veg"], "img": "img/chilly_cheese_toast_sandwich.jpeg"},
-{"id": 42, "cat": "INDIAN SANDWICHES", "name": "CORN CHEESE TOAST SANDWICH", "price": "80/-", "desc": "Sweet corn and cheese filled toast", "tags": ["Veg"], "img": "img/corn_cheese_toast_sandwich.jpeg"},
-{"id": 43, "cat": "GRILLED SANDWICHES", "name": "VEGGIE GRILLED SANDWICH", "price": "100/-", "desc": "Grilled sandwich with fresh veggies", "tags": ["Veg"], "img": "img/veggie_grilled_sandwich.jpeg"},
-{"id": 44, "cat": "GRILLED SANDWICHES", "name": "VEGGIE CHEESE GRILLED SANDWICH", "price": "120/-", "desc": "Grilled veggie sandwich with cheese", "tags": ["Veg"], "img": "img/veggie_cheese_grilled_sandwich.jpeg"},
-{"id": 45, "cat": "GRILLED SANDWICHES", "name": "CHILLY CHEESE GRILLED SANDWICH", "price": "120/-", "desc": "Spicy grilled sandwich with cheese", "tags": ["Veg"], "img": "img/chilly_cheese_grilled_sandwich.jpeg"},
-{"id": 46, "cat": "GRILLED SANDWICHES", "name": "PANEER CHILLY CHEESE GRILLED", "price": "140/-", "desc": "Grilled sandwich with paneer and chillies", "tags": ["Veg"], "img": "img/paneer_chilly_cheese_grilled.jpeg"},
-{"id": 47, "cat": "GRILLED SANDWICHES", "name": "PANEER TANDOORI GRILLED", "price": "150/-", "desc": "Tandoori flavored paneer grilled sandwich", "tags": ["Veg"], "img": "img/paneer_tandoori_grilled.jpeg"},
-{"id": 48, "cat": "GRILLED SANDWICHES", "name": "CORN CHEESE GRILLED SANDWICH", "price": "140/-", "desc": "Grilled sandwich with corn and cheese", "tags": ["Veg"], "img": "img/corn_cheese_grilled_sandwich.jpeg"},
-{"id": 49, "cat": "CHINESE STARTERS", "name": "MANCHURIAN DRY", "price": "100/-", "desc": "Vegetable dumplings in soy-garlic sauce", "tags": ["Veg"], "img": "img/manchurian_dry.jpeg"},
-{"id": 50, "cat": "CHINESE STARTERS", "name": "VEG CRISPY", "price": "120/-", "desc": "Deep fried crispy mixed vegetables", "tags": ["Veg"], "img": "img/veg_crispy.jpeg"},
-{"id": 51, "cat": "CHINESE STARTERS", "name": "CHICKEN CRISPY", "price": "150/-", "desc": "Crispy fried chicken tossed in sauces", "tags": ["Non-Veg"], "img": "img/chicken_crispy.jpeg"},
-{"id": 52, "cat": "CHINESE STARTERS", "name": "PANEER CHILLY", "price": "120/-", "desc": "Cottage cheese with peppers and chillies", "tags": ["Veg"], "img": "img/paneer_chilly.jpeg"},
-{"id": 53, "cat": "CHINESE STARTERS", "name": "CHICKEN CHILLY", "price": "150/-", "desc": "Chicken pieces with peppers and chillies", "tags": ["Non-Veg"], "img": "img/chicken_chilly.jpeg"},
-{"id": 54, "cat": "CHINESE STARTERS", "name": "CHICKEN LOLLYPOP", "price": "120/-", "desc": "Chicken wings shaped like lollipops", "tags": ["Non-Veg"], "img": "img/chicken_lollypop.jpeg"},
-{"id": 55, "cat": "CHINESE STARTERS", "name": "CHICKEN 65", "price": "120/-", "desc": "Spicy deep fried chicken appetizer", "tags": ["Non-Veg"], "img": "img/chicken_65.jpeg"},
-{"id": 56, "cat": "CHINESE STARTERS", "name": "CHEESE CORN BALL", "price": "150/-", "desc": "Golden fried balls of cheese and corn", "tags": ["Veg"], "img": "img/cheese_corn_ball.jpeg"},
-{"id": 57, "cat": "CHINESE STARTERS", "name": "HARA BHARA KABAB", "price": "120/-", "desc": "Vegetable kababs with spinach and peas", "tags": ["Veg"], "img": "img/hara_bhara_kabab.jpeg"},
-{"id": 58, "cat": "CHINESE STARTERS", "name": "SPRING ROLL", "price": "120/-", "desc": "Crispy rolls filled with veggies", "tags": ["Veg"], "img": "img/spring_roll.jpeg"},
-{"id": 59, "cat": "EGG PREPARATIONS", "name": "MASALA OMELETTE", "price": "60/-", "desc": "Spiced beaten eggs", "tags": ["Egg"], "img": "img/masala_omelette.jpeg"},
-{"id": 60, "cat": "EGG PREPARATIONS", "name": "EGG WHITE OMELETTE", "price": "70/-", "desc": "Healthy omelette made with egg whites", "tags": ["Egg"], "img": "img/egg_white_omelette.jpeg"},
-{"id": 61, "cat": "EGG PREPARATIONS", "name": "EGG HALF FRY", "price": "70/-", "desc": "Sunny side up eggs", "tags": ["Egg"], "img": "img/egg_half_fry.jpeg"},
-{"id": 62, "cat": "EGG PREPARATIONS", "name": "BOILED EGG", "price": "30/-", "desc": "Hard boiled eggs", "tags": ["Egg"], "img": "img/boiled_egg.jpeg"},
-{"id": 63, "cat": "EGG PREPARATIONS", "name": "EGG BHURJI", "price": "70/-", "desc": "Spiced scrambled eggs", "tags": ["Egg"], "img": "img/egg_bhurji.jpeg"},
-{"id": 64, "cat": "RICE PREPARATIONS", "name": "DAL KHICHADI", "price": "100/-", "desc": "Lentils and rice cooked together", "tags": ["Veg"], "img": "img/dal_khichadi.jpeg"},
-{"id": 65, "cat": "RICE PREPARATIONS", "name": "DAL KHICHADI TADKA", "price": "110/-", "desc": "Khichadi with an aromatic spice tempering", "tags": ["Veg"], "img": "img/dal_khichadi_tadka.jpeg"},
-{"id": 66, "cat": "RICE PREPARATIONS", "name": "VEG PULAO", "price": "100/-", "desc": "Aromatic rice cooked with vegetables", "tags": ["Veg"], "img": "img/veg_pulao.jpeg"},
-{"id": 67, "cat": "RICE PREPARATIONS", "name": "VEG BIRYANI", "price": "120/-", "desc": "Fragrant rice layered with spicy vegetables", "tags": ["Veg"], "img": "img/veg_biryani.jpeg"},
-{"id": 68, "cat": "RICE PREPARATIONS", "name": "CHICKEN BIRYANI", "price": "150/-", "desc": "Classic layered chicken and rice dish", "tags": ["Non-Veg"], "img": "img/chicken_biryani.jpeg"},
-{"id": 69, "cat": "NOODLES", "name": "VEG FRIED NOODLES", "price": "90/-", "desc": "Stir-fried noodles with mixed vegetables", "tags": ["Veg"], "img": "img/veg_fried_noodles.jpeg"},
-{"id": 70, "cat": "NOODLES", "name": "CHICKEN FRIED NOODLES", "price": "140/-", "desc": "Stir-fried noodles with chicken pieces", "tags": ["Non-Veg"], "img": "img/chicken_fried_noodles.jpeg"},
-{"id": 71, "cat": "NOODLES", "name": "EGG FRIED NOODLES", "price": "120/-", "desc": "Stir-fried noodles with scrambled egg", "tags": ["Egg"], "img": "img/egg_fried_noodles.jpeg"},
-{"id": 72, "cat": "NOODLES", "name": "SCHEZWAN FRIED NOODLES", "price": "100/-", "desc": "Spicy schezwan style veg noodles", "tags": ["Veg"], "img": "img/schezwan_fried_noodles.jpeg"},
-{"id": 73, "cat": "NOODLES", "name": "CHICKEN SCHEZWAN FRIED NOODLES", "price": "150/-", "desc": "Spicy chicken noodles in schezwan sauce", "tags": ["Non-Veg"], "img": "img/chicken_schezwan_fried_noodles.jpeg"},
-{"id": 74, "cat": "NOODLES", "name": "EGG SCHEZWAN FRIED NOODLES", "price": "130/-", "desc": "Spicy egg noodles in schezwan sauce", "tags": ["Egg"], "img": "img/egg_schezwan_fried_noodles.jpeg"},
-{"id": 75, "cat": "NOODLES", "name": "MANCHURIAN FRIED NOODLES", "price": "140/-", "desc": "Noodles served with manchurian balls", "tags": ["Veg"], "img": "img/manchurian_fried_noodles.jpeg"},
-{"id": 76, "cat": "NOODLES", "name": "MANCHURIAN SCHEZWAN FRIED NOODLES", "price": "150/-", "desc": "Spicy noodles with manchurian twist", "tags": ["Veg"], "img": "img/manchurian_schezwan_fried_noodles.jpeg"},
-{"id": 77, "cat": "NOODLES", "name": "VEG TRIPLE SCHEZWAN FRIED NOODLES", "price": "160/-", "desc": "Combo of rice, noodles and spicy gravy", "tags": ["Veg"], "img": "img/veg_triple_schezwan_fried_noodles.jpeg"},
-{"id": 78, "cat": "NOODLES", "name": "CHICKEN TRIPLE SCHEZWAN FRIED NOODLES", "price": "180/-", "desc": "Triple combo with chicken and spicy gravy", "tags": ["Non-Veg"], "img": "img/chicken_triple_schezwan_fried_noodles.jpeg"},
-{"id": 79, "cat": "FRIED RICE", "name": "VEG FRIED RICE", "price": "90/-", "desc": "Classic stir-fried vegetable rice", "tags": ["Veg"], "img": "img/veg_fried_rice.jpeg"},
-{"id": 80, "cat": "FRIED RICE", "name": "CHICKEN FRIED RICE", "price": "140/-", "desc": "Stir-fried rice with chicken pieces", "tags": ["Non-Veg"], "img": "img/chicken_fried_rice.jpeg"},
-{"id": 81, "cat": "FRIED RICE", "name": "EGG FRIED RICE", "price": "120/-", "desc": "Stir-fried rice with scrambled egg", "tags": ["Egg"], "img": "img/egg_fried_rice.jpeg"},
-{"id": 82, "cat": "FRIED RICE", "name": "SCHEZWAN FRIED RICE", "price": "100/-", "desc": "Spicy schezwan style veg fried rice", "tags": ["Veg"], "img": "img/schezwan_fried_rice.jpeg"},
-{"id": 83, "cat": "FRIED RICE", "name": "CHICKEN SCHEZWAN FRIED RICE", "price": "150/-", "desc": "Spicy chicken fried rice", "tags": ["Non-Veg"], "img": "img/chicken_schezwan_fried_rice.jpeg"},
-{"id": 84, "cat": "FRIED RICE", "name": "EGG SCHEZWAN FRIED RICE", "price": "130/-", "desc": "Spicy egg fried rice", "tags": ["Egg"], "img": "img/egg_schezwan_fried_rice.jpeg"},
-{"id": 85, "cat": "FRIED RICE", "name": "MANCHURIAN FRIED RICE", "price": "140/-", "desc": "Fried rice with manchurian gravy", "tags": ["Veg"], "img": "img/manchurian_fried_rice.jpeg"},
-{"id": 86, "cat": "FRIED RICE", "name": "MANCHURIAN SCHEZWAN FRIED RICE", "price": "150/-", "desc": "Spicy manchurian fried rice", "tags": ["Veg"], "img": "img/manchurian_schezwan_fried_rice.jpeg"},
-{"id": 87, "cat": "FRIED RICE", "name": "VEG TRIPLE SCHEZWAN FRIED RICE", "price": "160/-", "desc": "Triple schezwan rice with veg gravy", "tags": ["Veg"], "img": "img/veg_triple_schezwan_fried_rice.jpeg"},
-{"id": 88, "cat": "FRIED RICE", "name": "CHICKEN TRIPLE SCHEZWAN FRIED RICE", "price": "180/-", "desc": "Triple schezwan rice with chicken gravy", "tags": ["Non-Veg"], "img": "img/chicken_triple_schezwan_fried_rice.jpeg"},
-{"id": 89, "cat": "FRESH JUICES", "name": "SWEET LIME JUICE", "price": "40/-", "desc": "Freshly squeezed mosambi juice", "tags": ["Veg"], "img": "img/sweet_lime_juice.jpeg"},
-{"id": 90, "cat": "FRESH JUICES", "name": "WATERMELON JUICE", "price": "60/-", "desc": "Refreshing fresh watermelon juice", "tags": ["Veg"], "img": "img/watermelon_juice.jpeg"},
-{"id": 91, "cat": "FRESH JUICES", "name": "CARROT JUICE", "price": "60/-", "desc": "Healthy fresh carrot juice", "tags": ["Veg"], "img": "img/carrot_juice.jpeg"},
-{"id": 92, "cat": "FRESH JUICES", "name": "BEETROOT JUICE", "price": "60/-", "desc": "Nutritious fresh beetroot juice", "tags": ["Veg"], "img": "img/beetroot_juice.jpeg"},
-{"id": 93, "cat": "FRESH JUICES", "name": "PINEAPPLE JUICE", "price": "80/-", "desc": "Freshly made pineapple juice", "tags": ["Veg"], "img": "img/pineapple_juice.jpeg"},
-{"id": 94, "cat": "FRESH JUICES", "name": "POMEGRANATE JUICE", "price": "100/-", "desc": "Fresh and healthy anar juice", "tags": ["Veg"], "img": "img/pomegranate_juice.jpeg"},
-{"id": 95, "cat": "FRESH JUICES", "name": "APPLE JUICE", "price": "100/-", "desc": "Freshly pressed apple juice", "tags": ["Veg"], "img": "img/apple_juice.jpeg"},
-{"id": 96, "cat": "FRUIT SHAKES", "name": "APPLE MILKSHAKE", "price": "120/-", "desc": "Creamy shake with fresh apples", "tags": ["Veg"], "img": "img/apple_milkshake.jpeg"},
-{"id": 97, "cat": "FRUIT SHAKES", "name": "CHICKOO MILKSHAKE", "price": "120/-", "desc": "Rich and sweet chickoo shake", "tags": ["Veg"], "img": "img/chickoo_milkshake.jpeg"},
-{"id": 98, "cat": "FRUIT SHAKES", "name": "ΒΑΝΑΝΑ MILKSHAKE", "price": "100/-", "desc": "Classic banana flavored milkshake", "tags": ["Veg"], "img": "img/banana_milkshake.jpeg"},
-{"id": 99, "cat": "FRUIT SHAKES", "name": "STRAWBERRY MILKSHAKE (SEASONAL)", "price": "120/-", "desc": "Fresh strawberry shake available in season", "tags": ["Veg"], "img": "img/strawberry_milkshake.jpeg"},
-{"id": 100, "cat": "FRUIT SHAKES", "name": "CUSTARD APPLE MILKSHAKE (SEASONAL)", "price": "120/-", "desc": "Exotic sitaphal shake available in season", "tags": ["Veg"], "img": "img/custard_apple_milkshake.jpeg"},
-{"id": 101, "cat": "FRUIT SHAKES", "name": "MUSKMELON SHAKE (SEASONAL)", "price": "120/-", "desc": "Refreshing muskmelon shake in season", "tags": ["Veg"], "img": "img/muskmelon_shake.jpeg"},
-{"id": 102, "cat": "CHAAT CORNER", "name": "PANI PURI", "price": "40/-", "desc": "Crispy puris with spicy and tangy water", "tags": ["Veg"], "img": "img/pani_puri.jpeg"},
-{"id": 103, "cat": "CHAAT CORNER", "name": "MASALA PURI", "price": "50/-", "desc": "Crushed puris with warm peas gravy", "tags": ["Veg"], "img": "img/masala_puri.jpeg"},
-{"id": 104, "cat": "CHAAT CORNER", "name": "BHEL PURI", "price": "50/-", "desc": "Puffed rice mixed with chutneys and veggies", "tags": ["Veg"], "img": "img/bhel_puri.jpeg"},
-{"id": 105, "cat": "CHAAT CORNER", "name": "SEV PURI", "price": "60/-", "desc": "Flat puris topped with potato and sev", "tags": ["Veg"], "img": "img/sev_puri.jpeg"},   
-{"id": 106, "cat": "CHAAT CORNER", "name": "DAHI PURI", "price": "60/-", "desc": "Puris filled with curd and sweet chutney", "tags": ["Veg"], "img": "img/dahi_puri.jpeg"},
-{"id": 107, "cat": "CHAAT CORNER", "name": "PAPDI CHAAT", "price": "60/-", "desc": "Crispy dough wafers with tangy toppings", "tags": ["Veg"], "img": "img/papdi_chaat.jpeg"},
-{"id": 108, "cat": "MEALS", "name": "LUNCH THALI", "price": "120/-", "desc": "2 Chapati, 1 Bowl Rice, Salad, 1 Veg Gravy, 1 Dry Veg, 1 Dal, Pickle", "tags": ["Veg"], "img": "img/lunch_thali.jpeg"},
-{"id": 109, "cat": "MEALS", "name": "MINI LUNCH", "price": "100/-", "desc": "2 Chapati, 1 Bowl Rice, Salad, 1 Dry Vegetable, 1 Dal, Pickle", "tags": ["Veg"], "img": "img/mini_lunch.jpeg"},
-
+            {"id": 1, "cat": "SNACKS", "name": "MISAL PAAV", "price": "80/-", "desc": "Spicy sprout curry served with bread rolls", "tags": ["Veg"], "img": "img/misal_paav.jpeg"},
+            {"id": 2, "cat": "SNACKS", "name": "ONION POHA", "price": "50/-", "desc": "Flattened rice cooked with onions and spices", "tags": ["Veg"], "img": "img/onion_poha.jpeg"},
+            {"id": 3, "cat": "SNACKS", "name": "SAMOSA", "price": "30/-", "desc": "Crispy pastry filled with spiced potatoes", "tags": ["Veg"], "img": "img/samosa.jpeg"},
+            {"id": 4, "cat": "SNACKS", "name": "BATATA VADA", "price": "30/-", "desc": "Deep fried potato dumpling", "tags": ["Veg"], "img": "img/batata_vada.jpeg"},
+            {"id": 5, "cat": "SNACKS", "name": "VEG CUTLET", "price": "70/-", "desc": "Crispy vegetable patties", "tags": ["Veg"], "img": "img/veg_cutlet.jpeg"},
+            {"id": 6, "cat": "SNACKS", "name": "VEG PAKODA", "price": "70/-", "desc": "Assorted vegetable fritters", "tags": ["Veg"], "img": "img/veg_pakoda.jpeg"},
+            {"id": 7, "cat": "SNACKS", "name": "PURI BHAJI", "price": "70/-", "desc": "Deep fried puffed bread with potato curry", "tags": ["Veg"], "img": "img/puri_bhaji.jpeg"},
+            {"id": 8, "cat": "SNACKS", "name": "CHOLE BHATURE", "price": "70/-", "desc": "Spicy chickpea curry with fried bread", "tags": ["Veg"], "img": "img/chole_bhature.jpeg"},
+            {"id": 9, "cat": "SNACKS", "name": "PAV BHAJI", "price": "100/-", "desc": "Mashed veg curry with buttered bread", "tags": ["Veg"], "img": "img/pav_bhaji.jpeg"},
+            {"id": 10, "cat": "SNACKS", "name": "VEGETABLE MAGGIE", "price": "60/-", "desc": "Instant noodles with mixed vegetables", "tags": ["Veg"], "img": "img/vegetable_maggie.jpeg"},
+            {"id": 11, "cat": "SNACKS", "name": "CHEESE MAGGIE", "price": "80/-", "desc": "Instant noodles topped with cheese", "tags": ["Veg"], "img": "img/cheese_maggie.jpeg"},
+            {"id": 12, "cat": "TEA & BEVERAGES", "name": "SPECIAL TEA", "price": "20/-", "desc": "Rich and aromatic special tea", "tags": ["Veg"], "img": "img/special_tea.jpeg"},
+            {"id": 13, "cat": "TEA & BEVERAGES", "name": "MASALA TEA", "price": "20/-", "desc": "Tea brewed with Indian spices", "tags": ["Veg"], "img": "img/masala_tea.jpeg"},
+            {"id": 14, "cat": "TEA & BEVERAGES", "name": "BLACK TEA HONEY", "price": "30/-", "desc": "Black tea sweetened with honey", "tags": ["Veg"], "img": "img/black_tea_honey.jpeg"},
+            {"id": 15, "cat": "TEA & BEVERAGES", "name": "LEMON TEA", "price": "30/-", "desc": "Refreshing tea with a zing of lemon", "tags": ["Veg"], "img": "img/lemon_tea.jpeg"},
+            {"id": 16, "cat": "TEA & BEVERAGES", "name": "GREEN TEA", "price": "30/-", "desc": "Healthy and light green tea", "tags": ["Veg"], "img": "img/green_tea.jpeg"},
+            {"id": 17, "cat": "COFFEE", "name": "NESCOFFEE", "price": "20/-", "desc": "Classic instant coffee", "tags": ["Veg"], "img": "img/nescoffee.jpeg"},
+            {"id": 18, "cat": "COFFEE", "name": "FILTER COFFEE", "price": "25/-", "desc": "Traditional South Indian filter coffee", "tags": ["Veg"], "img": "img/filter_coffee.jpeg"},
+            {"id": 19, "cat": "COFFEE", "name": "BLACK COFFEE", "price": "30/-", "desc": "Strong coffee without milk", "tags": ["Veg"], "img": "img/black_coffee.jpeg"},
+            {"id": 20, "cat": "COFFEE", "name": "CAPPUCCINO", "price": "40/-", "desc": "Frothy coffee with a rich layer of foam", "tags": ["Veg"], "img": "img/cappuccino.jpeg"},
+            {"id": 21, "cat": "COFFEE", "name": "ESPRESSO", "price": "30/-", "desc": "Concentrated coffee shot", "tags": ["Veg"], "img": "img/espresso.jpeg"},
+            {"id": 22, "cat": "COFFEE", "name": "AMERICANO", "price": "40/-", "desc": "Diluted espresso for a smooth taste", "tags": ["Veg"], "img": "img/americano.jpeg"},
+            {"id": 23, "cat": "SOUTH INDIAN", "name": "UPMA", "price": "60/-", "desc": "Savory semolina porridge", "tags": ["Veg"], "img": "img/upma.jpeg"},
+            {"id": 24, "cat": "SOUTH INDIAN", "name": "IDLI SAMBAR", "price": "60/-", "desc": "Steamed rice cakes with lentil soup", "tags": ["Veg"], "img": "img/idli_sambar.jpeg"},
+            {"id": 25, "cat": "SOUTH INDIAN", "name": "MEDU WADA SAMBAR", "price": "80/-", "desc": "Fried lentil donuts with sambar", "tags": ["Veg"], "img": "img/medu_wada_sambar.jpeg"},
+            {"id": 26, "cat": "SOUTH INDIAN", "name": "ONION UTTAPAM", "price": "70/-", "desc": "Thick rice pancake topped with onions", "tags": ["Veg"], "img": "img/onion_uttapam.jpeg"},
+            {"id": 27, "cat": "SOUTH INDIAN", "name": "PLAIN DOSA", "price": "60/-", "desc": "Thin crispy rice crepe", "tags": ["Veg"], "img": "img/plain_dosa.jpeg"},
+            {"id": 28, "cat": "SOUTH INDIAN", "name": "BUTTER PLAIN DOSA", "price": "70/-", "desc": "Plain dosa with extra butter", "tags": ["Veg"], "img": "img/butter_plain_dosa.jpeg"},
+            {"id": 29, "cat": "SOUTH INDIAN", "name": "MASALA DOSA", "price": "80/-", "desc": "Dosa filled with spiced potato", "tags": ["Veg"], "img": "img/masala_dosa.jpeg"},
+            {"id": 30, "cat": "SOUTH INDIAN", "name": "BUTTER MASALA DOSA", "price": "90/-", "desc": "Masala dosa with butter", "tags": ["Veg"], "img": "img/butter_masala_dosa.jpeg"},
+            {"id": 31, "cat": "SOUTH INDIAN", "name": "SCHEZWAN DOSA", "price": "80/-", "desc": "Dosa with spicy schezwan sauce", "tags": ["Veg"], "img": "img/schezwan_dosa.jpeg"},
+            {"id": 32, "cat": "SOUTH INDIAN", "name": "SCHEZWAN MASALA DOSA", "price": "90/-", "desc": "Masala dosa with schezwan twist", "tags": ["Veg"], "img": "img/schezwan_masala_dosa.jpeg"},
+            {"id": 33, "cat": "SOUTH INDIAN", "name": "MYSORE MASALA DOSA", "price": "100/-", "desc": "Spicy Mysore style masala dosa", "tags": ["Veg"], "img": "img/mysore_masala_dosa.jpeg"},
+            {"id": 34, "cat": "SOUTH INDIAN", "name": "MYSORE BUTTER MASALA DOSA", "price": "110/-", "desc": "Mysore masala dosa with butter", "tags": ["Veg"], "img": "img/mysore_butter_masala_dosa.jpeg"},
+            {"id": 35, "cat": "SOUTH INDIAN", "name": "MYSORE CHEESE MASALA DOSA", "price": "130/-", "desc": "Mysore masala dosa with cheese", "tags": ["Veg"], "img": "img/mysore_cheese_masala_dosa.jpeg"},
+            {"id": 36, "cat": "SOUTH INDIAN", "name": "SPRING DOSA", "price": "130/-", "desc": "Dosa with crunchy vegetable filling", "tags": ["Veg"], "img": "img/spring_dosa.jpeg"},
+            {"id": 37, "cat": "INDIAN SANDWICHES", "name": "VEGGIE TOAST SANDWICH", "price": "50/-", "desc": "Toasted bread with fresh vegetables", "tags": ["Veg"], "img": "img/veggie_toast_sandwich.jpeg"},
+            {"id": 38, "cat": "INDIAN SANDWICHES", "name": "MASALA TOAST SANDWICH", "price": "60/-", "desc": "Toasted bread with spiced potato filling", "tags": ["Veg"], "img": "img/masala_toast_sandwich.jpeg"},
+            {"id": 39, "cat": "INDIAN SANDWICHES", "name": "JAM TOAST SANDWICH", "price": "40/-", "desc": "Sweet sandwich with fruit jam", "tags": ["Veg"], "img": "img/jam_toast_sandwich.jpeg"},
+            {"id": 40, "cat": "INDIAN SANDWICHES", "name": "VEGGIE CHEESE TOAST SANDWICH", "price": "60/-", "desc": "Veggie toast with melted cheese", "tags": ["Veg"], "img": "img/veggie_cheese_toast_sandwich.jpeg"},
+            {"id": 41, "cat": "INDIAN SANDWICHES", "name": "CHILLY CHEESE TOAST SANDWICH", "price": "80/-", "desc": "Spicy green chillies and cheese toast", "tags": ["Veg"], "img": "img/chilly_cheese_toast_sandwich.jpeg"},
+            {"id": 42, "cat": "INDIAN SANDWICHES", "name": "CORN CHEESE TOAST SANDWICH", "price": "80/-", "desc": "Sweet corn and cheese filled toast", "tags": ["Veg"], "img": "img/corn_cheese_toast_sandwich.jpeg"},
+            {"id": 43, "cat": "GRILLED SANDWICHES", "name": "VEGGIE GRILLED SANDWICH", "price": "100/-", "desc": "Grilled sandwich with fresh veggies", "tags": ["Veg"], "img": "img/veggie_grilled_sandwich.jpeg"},
+            {"id": 44, "cat": "GRILLED SANDWICHES", "name": "VEGGIE CHEESE GRILLED SANDWICH", "price": "120/-", "desc": "Grilled veggie sandwich with cheese", "tags": ["Veg"], "img": "img/veggie_cheese_grilled_sandwich.jpeg"},
+            {"id": 45, "cat": "GRILLED SANDWICHES", "name": "CHILLY CHEESE GRILLED SANDWICH", "price": "120/-", "desc": "Spicy grilled sandwich with cheese", "tags": ["Veg"], "img": "img/chilly_cheese_grilled_sandwich.jpeg"},
+            {"id": 46, "cat": "GRILLED SANDWICHES", "name": "PANEER CHILLY CHEESE GRILLED", "price": "140/-", "desc": "Grilled sandwich with paneer and chillies", "tags": ["Veg"], "img": "img/paneer_chilly_cheese_grilled.jpeg"},
+            {"id": 47, "cat": "GRILLED SANDWICHES", "name": "PANEER TANDOORI GRILLED", "price": "150/-", "desc": "Tandoori flavored paneer grilled sandwich", "tags": ["Veg"], "img": "img/paneer_tandoori_grilled.jpeg"},
+            {"id": 48, "cat": "GRILLED SANDWICHES", "name": "CORN CHEESE GRILLED SANDWICH", "price": "140/-", "desc": "Grilled sandwich with corn and cheese", "tags": ["Veg"], "img": "img/corn_cheese_grilled_sandwich.jpeg"},
+            {"id": 49, "cat": "CHINESE STARTERS", "name": "MANCHURIAN DRY", "price": "100/-", "desc": "Vegetable dumplings in soy-garlic sauce", "tags": ["Veg"], "img": "img/manchurian_dry.jpeg"},
+            {"id": 50, "cat": "CHINESE STARTERS", "name": "VEG CRISPY", "price": "120/-", "desc": "Deep fried crispy mixed vegetables", "tags": ["Veg"], "img": "img/veg_crispy.jpeg"},
+            {"id": 51, "cat": "CHINESE STARTERS", "name": "CHICKEN CRISPY", "price": "150/-", "desc": "Crispy fried chicken tossed in sauces", "tags": ["Non-Veg"], "img": "img/chicken_crispy.jpeg"},
+            {"id": 52, "cat": "CHINESE STARTERS", "name": "PANEER CHILLY", "price": "120/-", "desc": "Cottage cheese with peppers and chillies", "tags": ["Veg"], "img": "img/paneer_chilly.jpeg"},
+            {"id": 53, "cat": "CHINESE STARTERS", "name": "CHICKEN CHILLY", "price": "150/-", "desc": "Chicken pieces with peppers and chillies", "tags": ["Non-Veg"], "img": "img/chicken_chilly.jpeg"},
+            {"id": 54, "cat": "CHINESE STARTERS", "name": "CHICKEN LOLLYPOP", "price": "120/-", "desc": "Chicken wings shaped like lollipops", "tags": ["Non-Veg"], "img": "img/chicken_lollypop.jpeg"},
+            {"id": 55, "cat": "CHINESE STARTERS", "name": "CHICKEN 65", "price": "120/-", "desc": "Spicy deep fried chicken appetizer", "tags": ["Non-Veg"], "img": "img/chicken_65.jpeg"},
+            {"id": 56, "cat": "CHINESE STARTERS", "name": "CHEESE CORN BALL", "price": "150/-", "desc": "Golden fried balls of cheese and corn", "tags": ["Veg"], "img": "img/cheese_corn_ball.jpeg"},
+            {"id": 57, "cat": "CHINESE STARTERS", "name": "HARA BHARA KABAB", "price": "120/-", "desc": "Vegetable kababs with spinach and peas", "tags": ["Veg"], "img": "img/hara_bhara_kabab.jpeg"},
+            {"id": 58, "cat": "CHINESE STARTERS", "name": "SPRING ROLL", "price": "120/-", "desc": "Crispy rolls filled with veggies", "tags": ["Veg"], "img": "img/spring_roll.jpeg"},
+            {"id": 59, "cat": "EGG PREPARATIONS", "name": "MASALA OMELETTE", "price": "60/-", "desc": "Spiced beaten eggs", "tags": ["Egg"], "img": "img/masala_omelette.jpeg"},
+            {"id": 60, "cat": "EGG PREPARATIONS", "name": "EGG WHITE OMELETTE", "price": "70/-", "desc": "Healthy omelette made with egg whites", "tags": ["Egg"], "img": "img/egg_white_omelette.jpeg"},
+            {"id": 61, "cat": "EGG PREPARATIONS", "name": "EGG HALF FRY", "price": "70/-", "desc": "Sunny side up eggs", "tags": ["Egg"], "img": "img/egg_half_fry.jpeg"},
+            {"id": 62, "cat": "EGG PREPARATIONS", "name": "BOILED EGG", "price": "30/-", "desc": "Hard boiled eggs", "tags": ["Egg"], "img": "img/boiled_egg.jpeg"},
+            {"id": 63, "cat": "EGG PREPARATIONS", "name": "EGG BHURJI", "price": "70/-", "desc": "Spiced scrambled eggs", "tags": ["Egg"], "img": "img/egg_bhurji.jpeg"},
+            {"id": 64, "cat": "RICE PREPARATIONS", "name": "DAL KHICHADI", "price": "100/-", "desc": "Lentils and rice cooked together", "tags": ["Veg"], "img": "img/dal_khichadi.jpeg"},
+            {"id": 65, "cat": "RICE PREPARATIONS", "name": "DAL KHICHADI TADKA", "price": "110/-", "desc": "Khichadi with an aromatic spice tempering", "tags": ["Veg"], "img": "img/dal_khichadi_tadka.jpeg"},
+            {"id": 66, "cat": "RICE PREPARATIONS", "name": "VEG PULAO", "price": "100/-", "desc": "Aromatic rice cooked with vegetables", "tags": ["Veg"], "img": "img/veg_pulao.jpeg"},
+            {"id": 67, "cat": "RICE PREPARATIONS", "name": "VEG BIRYANI", "price": "120/-", "desc": "Fragrant rice layered with spicy vegetables", "tags": ["Veg"], "img": "img/veg_biryani.jpeg"},
+            {"id": 68, "cat": "RICE PREPARATIONS", "name": "CHICKEN BIRYANI", "price": "150/-", "desc": "Classic layered chicken and rice dish", "tags": ["Non-Veg"], "img": "img/chicken_biryani.jpeg"},
+            {"id": 69, "cat": "NOODLES", "name": "VEG FRIED NOODLES", "price": "90/-", "desc": "Stir-fried noodles with mixed vegetables", "tags": ["Veg"], "img": "img/veg_fried_noodles.jpeg"},
+            {"id": 70, "cat": "NOODLES", "name": "CHICKEN FRIED NOODLES", "price": "140/-", "desc": "Stir-fried noodles with chicken pieces", "tags": ["Non-Veg"], "img": "img/chicken_fried_noodles.jpeg"},
+            {"id": 71, "cat": "NOODLES", "name": "EGG FRIED NOODLES", "price": "120/-", "desc": "Stir-fried noodles with scrambled egg", "tags": ["Egg"], "img": "img/egg_fried_noodles.jpeg"},
+            {"id": 72, "cat": "NOODLES", "name": "SCHEZWAN FRIED NOODLES", "price": "100/-", "desc": "Spicy schezwan style veg noodles", "tags": ["Veg"], "img": "img/schezwan_fried_noodles.jpeg"},
+            {"id": 73, "cat": "NOODLES", "name": "CHICKEN SCHEZWAN FRIED NOODLES", "price": "150/-", "desc": "Spicy chicken noodles in schezwan sauce", "tags": ["Non-Veg"], "img": "img/chicken_schezwan_fried_noodles.jpeg"},
+            {"id": 74, "cat": "NOODLES", "name": "EGG SCHEZWAN FRIED NOODLES", "price": "130/-", "desc": "Spicy egg noodles in schezwan sauce", "tags": ["Egg"], "img": "img/egg_schezwan_fried_noodles.jpeg"},
+            {"id": 75, "cat": "NOODLES", "name": "MANCHURIAN FRIED NOODLES", "price": "140/-", "desc": "Noodles served with manchurian balls", "tags": ["Veg"], "img": "img/manchurian_fried_noodles.jpeg"},
+            {"id": 76, "cat": "NOODLES", "name": "MANCHURIAN SCHEZWAN FRIED NOODLES", "price": "150/-", "desc": "Spicy noodles with manchurian twist", "tags": ["Veg"], "img": "img/manchurian_schezwan_fried_noodles.jpeg"},
+            {"id": 77, "cat": "NOODLES", "name": "VEG TRIPLE SCHEZWAN FRIED NOODLES", "price": "160/-", "desc": "Combo of rice, noodles and spicy gravy", "tags": ["Veg"], "img": "img/veg_triple_schezwan_fried_noodles.jpeg"},
+            {"id": 78, "cat": "NOODLES", "name": "CHICKEN TRIPLE SCHEZWAN FRIED NOODLES", "price": "180/-", "desc": "Triple combo with chicken and spicy gravy", "tags": ["Non-Veg"], "img": "img/chicken_triple_schezwan_fried_noodles.jpeg"},
+            {"id": 79, "cat": "FRIED RICE", "name": "VEG FRIED RICE", "price": "90/-", "desc": "Classic stir-fried vegetable rice", "tags": ["Veg"], "img": "img/veg_fried_rice.jpeg"},
+            {"id": 80, "cat": "FRIED RICE", "name": "CHICKEN FRIED RICE", "price": "140/-", "desc": "Stir-fried rice with chicken pieces", "tags": ["Non-Veg"], "img": "img/chicken_fried_rice.jpeg"},
+            {"id": 81, "cat": "FRIED RICE", "name": "EGG FRIED RICE", "price": "120/-", "desc": "Stir-fried rice with scrambled egg", "tags": ["Egg"], "img": "img/egg_fried_rice.jpeg"},
+            {"id": 82, "cat": "FRIED RICE", "name": "SCHEZWAN FRIED RICE", "price": "100/-", "desc": "Spicy schezwan style veg fried rice", "tags": ["Veg"], "img": "img/schezwan_fried_rice.jpeg"},
+            {"id": 83, "cat": "FRIED RICE", "name": "CHICKEN SCHEZWAN FRIED RICE", "price": "150/-", "desc": "Spicy chicken fried rice", "tags": ["Non-Veg"], "img": "img/chicken_schezwan_fried_rice.jpeg"},
+            {"id": 84, "cat": "FRIED RICE", "name": "EGG SCHEZWAN FRIED RICE", "price": "130/-", "desc": "Spicy egg fried rice", "tags": ["Egg"], "img": "img/egg_schezwan_fried_rice.jpeg"},
+            {"id": 85, "cat": "FRIED RICE", "name": "MANCHURIAN FRIED RICE", "price": "140/-", "desc": "Fried rice with manchurian gravy", "tags": ["Veg"], "img": "img/manchurian_fried_rice.jpeg"},
+            {"id": 86, "cat": "FRIED RICE", "name": "MANCHURIAN SCHEZWAN FRIED RICE", "price": "150/-", "desc": "Spicy manchurian fried rice", "tags": ["Veg"], "img": "img/manchurian_schezwan_fried_rice.jpeg"},
+            {"id": 87, "cat": "FRIED RICE", "name": "VEG TRIPLE SCHEZWAN FRIED RICE", "price": "160/-", "desc": "Triple schezwan rice with veg gravy", "tags": ["Veg"], "img": "img/veg_triple_schezwan_fried_rice.jpeg"},
+            {"id": 88, "cat": "FRIED RICE", "name": "CHICKEN TRIPLE SCHEZWAN FRIED RICE", "price": "180/-", "desc": "Triple schezwan rice with chicken gravy", "tags": ["Non-Veg"], "img": "img/chicken_triple_schezwan_fried_rice.jpeg"},
+            {"id": 89, "cat": "FRESH JUICES", "name": "SWEET LIME JUICE", "price": "40/-", "desc": "Freshly squeezed mosambi juice", "tags": ["Veg"], "img": "img/sweet_lime_juice.jpeg"},
+            {"id": 90, "cat": "FRESH JUICES", "name": "WATERMELON JUICE", "price": "60/-", "desc": "Refreshing fresh watermelon juice", "tags": ["Veg"], "img": "img/watermelon_juice.jpeg"},
+            {"id": 91, "cat": "FRESH JUICES", "name": "CARROT JUICE", "price": "60/-", "desc": "Healthy fresh carrot juice", "tags": ["Veg"], "img": "img/carrot_juice.jpeg"},
+            {"id": 92, "cat": "FRESH JUICES", "name": "BEETROOT JUICE", "price": "60/-", "desc": "Nutritious fresh beetroot juice", "tags": ["Veg"], "img": "img/beetroot_juice.jpeg"},
+            {"id": 93, "cat": "FRESH JUICES", "name": "PINEAPPLE JUICE", "price": "80/-", "desc": "Freshly made pineapple juice", "tags": ["Veg"], "img": "img/pineapple_juice.jpeg"},
+            {"id": 94, "cat": "FRESH JUICES", "name": "POMEGRANATE JUICE", "price": "100/-", "desc": "Fresh and healthy anar juice", "tags": ["Veg"], "img": "img/pomegranate_juice.jpeg"},
+            {"id": 95, "cat": "FRESH JUICES", "name": "APPLE JUICE", "price": "100/-", "desc": "Freshly pressed apple juice", "tags": ["Veg"], "img": "img/apple_juice.jpeg"},
+            {"id": 96, "cat": "FRUIT SHAKES", "name": "APPLE MILKSHAKE", "price": "120/-", "desc": "Creamy shake with fresh apples", "tags": ["Veg"], "img": "img/apple_milkshake.jpeg"},
+            {"id": 97, "cat": "FRUIT SHAKES", "name": "CHICKOO MILKSHAKE", "price": "120/-", "desc": "Rich and sweet chickoo shake", "tags": ["Veg"], "img": "img/chickoo_milkshake.jpeg"},
+            {"id": 98, "cat": "FRUIT SHAKES", "name": "BANANA MILKSHAKE", "price": "100/-", "desc": "Classic banana flavored milkshake", "tags": ["Veg"], "img": "img/banana_milkshake.jpeg"},
+            {"id": 99, "cat": "FRUIT SHAKES", "name": "STRAWBERRY MILKSHAKE (SEASONAL)", "price": "120/-", "desc": "Fresh strawberry shake available in season", "tags": ["Veg"], "img": "img/strawberry_milkshake.jpeg"},
+            {"id": 100, "cat": "FRUIT SHAKES", "name": "CUSTARD APPLE MILKSHAKE (SEASONAL)", "price": "120/-", "desc": "Exotic sitaphal shake available in season", "tags": ["Veg"], "img": "img/custard_apple_milkshake.jpeg"},
+            {"id": 101, "cat": "FRUIT SHAKES", "name": "MUSKMELON SHAKE (SEASONAL)", "price": "120/-", "desc": "Refreshing muskmelon shake in season", "tags": ["Veg"], "img": "img/muskmelon_shake.jpeg"},
+            {"id": 102, "cat": "CHAAT CORNER", "name": "PANI PURI", "price": "40/-", "desc": "Crispy puris with spicy and tangy water", "tags": ["Veg"], "img": "img/pani_puri.jpeg"},
+            {"id": 103, "cat": "CHAAT CORNER", "name": "MASALA PURI", "price": "50/-", "desc": "Crushed puris with warm peas gravy", "tags": ["Veg"], "img": "img/masala_puri.jpeg"},
+            {"id": 104, "cat": "CHAAT CORNER", "name": "BHEL PURI", "price": "50/-", "desc": "Puffed rice mixed with chutneys and veggies", "tags": ["Veg"], "img": "img/bhel_puri.jpeg"},
+            {"id": 105, "cat": "CHAAT CORNER", "name": "SEV PURI", "price": "60/-", "desc": "Flat puris topped with potato and sev", "tags": ["Veg"], "img": "img/sev_puri.jpeg"},   
+            {"id": 106, "cat": "CHAAT CORNER", "name": "DAHI PURI", "price": "60/-", "desc": "Puris filled with curd and sweet chutney", "tags": ["Veg"], "img": "img/dahi_puri.jpeg"},
+            {"id": 107, "cat": "CHAAT CORNER", "name": "PAPDI CHAAT", "price": "60/-", "desc": "Crispy dough wafers with tangy toppings", "tags": ["Veg"], "img": "img/papdi_chaat.jpeg"},
+            {"id": 108, "cat": "MEALS", "name": "LUNCH THALI", "price": "120/-", "desc": "2 Chapati, 1 Bowl Rice, Salad, 1 Veg Gravy, 1 Dry Veg, 1 Dal, Pickle", "tags": ["Veg"], "img": "img/lunch_thali.jpeg"},
+            {"id": 109, "cat": "MEALS", "name": "MINI LUNCH", "price": "100/-", "desc": "2 Chapati, 1 Bowl Rice, Salad, 1 Dry Vegetable, 1 Dal, Pickle", "tags": ["Veg"], "img": "img/mini_lunch.jpeg"}
         ];
 
         // Render menu items
@@ -844,29 +632,29 @@
             const menuGrid = document.getElementById('menuGrid');
 
             if (items.length === 0) {
-                menuGrid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:40px 20px">No items found</p>';
+                menuGrid.innerHTML = '<p style="text-align:center; color:#666; grid-column:1/-1; padding:40px 20px">No items found</p>';
                 return;
             }
 
             menuGrid.innerHTML = items.map(item => `
-        <div class="card" data-cat="${item.cat}">
-          <div class="card-header">
-            <div class="thumb">
-              <img src="${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIi8+CjxwYXRoIGQ9Ik03MCA4MEgxMTBNODAgNzBWOTBNNjUgOTVIMTA1TTk1IDY1VjEwNU02NSA2NVYxMDVNNzUgNzVIOThNNzUgODVIOThNNzUgOTVIOThNNzUgMTA1SDk4TTY1IDc1SDcyTTY1IDg1SDcyTTY1IDk1SDcyTTY1IDEwNUg3Mk0xMDggNzVIMTE1TTEwOCA4NUgxMTVNMTA4IDk1SDExNU0xMDggMTA1SDExNSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+'">
-            </div>
-            <div class="card-info">
-              <h3 class="dish">${item.name}</h3>
-              <p class="desc">${item.desc}</p>
-              <div class="tags">
-                ${item.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="price">${item.price}</div>
-          </div>
-        </div>
-      `).join('');
+                <div class="card" data-cat="${item.cat}">
+                    <div class="card-header">
+                        <div class="thumb">
+                            <img src="${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjZjVmNWY1Ii8+CjxwYXRoIGQ9Ik00MCA0MEg4ME01MCAzMFY1MEwzNSA0MEw1MCA1MEw2NSAzMEw4MCA0MEw2NSA2MEw4MCA4MEw2NSA3MEw1MCA5MEwzNSA3MEw1MCA1MEw2NSA3MEw4MCA2MEw2NSA0MEw1MCA2MEwzNSA4MEw1MCA5MEw2NSA3MEw4MCA4MEw2NSA2MEw1MCA4MEwzNSA2MEw1MCA0MCIgc3Ryb2tlPSIjYzhjOGM4IiBzdHJva2Utd2lkdGg9IjIiLz4KPC9zdmc+'">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="dish">${item.name}</h3>
+                            <p class="desc">${item.desc}</p>
+                            <div class="tags">
+                                ${item.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price">${item.price}</div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Filter menu items by category
@@ -881,6 +669,11 @@
 
         // Search functionality
         function searchItems(query) {
+            if (!query.trim()) {
+                renderMenuItems(data);
+                return;
+            }
+            
             const filteredItems = data.filter(item =>
                 item.name.toLowerCase().includes(query.toLowerCase()) ||
                 item.desc.toLowerCase().includes(query.toLowerCase()) ||
@@ -910,5 +703,4 @@
         });
     </script>
 </body>
-
 </html>
